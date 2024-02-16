@@ -9,6 +9,7 @@ List<FileSystemEntity> getDartFiles() {
   final dartFile = Glob("$path/lib/**.dart");
   final dartFiles = <FileSystemEntity>[];
   for (var entity in dartFile.listSync(followLinks: false)) {
+    if (entity.path.contains('$path/lib/generated')) continue;
     dartFiles.add(entity);
   }
 
